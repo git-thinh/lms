@@ -22,8 +22,8 @@ const useLayoutStyles = makeStyles(() => ({
   }
 }));
 
-const withLayout = (Page: NextPage): NextPage => {
-  const FullPageComponent: NextPage = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode }) => {
+const withLayout = <T, P = React.PropsWithChildren<T>>(Page: NextPage<P>): NextPage => {
+  const FullPageComponent: NextPage = (props: any) => {
     const layoutClasses = useLayoutStyles();
 
     return (

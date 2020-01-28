@@ -26,6 +26,8 @@ app
     const CASSANDRA_CONTACT_POINTS: string[] | undefined = (process.env.CASSANDRA_CONTACT_POINTS || 'localhost').split(
       /\s*,\s*/g
     );
+    const CASSANDRA_KEYSPACE: string = process.env.CASSANDRA_KEYSPACE || 'lms';
+    const CASSANDRA_LOCAL_DATA_CENTER: string = process.env.CASSANDRA_LOCAL_DATA_CENTER || 'DC1';
     const CASSANDRA_USERNAME = process.env.CASSANDRA_USERNAME || 'cassandra';
     const CASSANDRA_PASSWORD = process.env.CASSANDRA_PASSWORD || 'cassandra';
 
@@ -36,7 +38,7 @@ app
         password: CASSANDRA_PASSWORD
       },
       queryOptions: {
-        keyspace: 'lms',
+        keyspace: CASSANDRA_KEYSPACE,
         prepare: true,
         counter: true
       }
@@ -47,6 +49,7 @@ app
       };
     } else {
       clientOptions.contactPoints = CASSANDRA_CONTACT_POINTS;
+      clientOptions.localDataCenter = CASSANDRA_LOCAL_DATA_CENTER;
     }
 
     const store = new CassandraStore({
