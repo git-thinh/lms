@@ -23,8 +23,8 @@
     "test": "jest --verbose",
     "eslint": "eslint **/*.{ts,js,tsx,jsx}",
     "dev": "NODE_ENV=development nodemon",
-    "dev:debug": "NODE_ENV=development cp tsconfig.json server/tsconfig.json && tsc --build tsconfig.server.json server && node --inspect dist/app.js",
-    "build": "NODE_ENV=production cp tsconfig.json server/tsconfig.json && next build && tsc --build tsconfig.server.json server",
+    "dev:debug": "NODE_ENV=development cp tsconfig.json server/tsconfig.json && tsc --build tsconfig.server.json && node --inspect dist/app.js",
+    "build": "NODE_ENV=production cp tsconfig.json server/tsconfig.json && next build && tsc --build tsconfig.server.json",
     "start": "NODE_ENV=production node dist/app.js"
   },
   "dependencies": {

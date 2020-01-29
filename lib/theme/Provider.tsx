@@ -8,7 +8,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { ThemeContext, ThemeType } from './Context';
 import selectTheme from './themes';
 
-type CustomThemeProviderProps = {
+export type CustomThemeProviderProps = {
   theme?: string | null;
   children: React.ReactNode;
 };
