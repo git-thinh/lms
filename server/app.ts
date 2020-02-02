@@ -32,7 +32,7 @@ app
     const CASSANDRA_PASSWORD = process.env.CASSANDRA_PASSWORD || 'cassandra';
 
     const clientOptions: ClientOptions = {
-      keyspace: 'lms',
+      keyspace: CASSANDRA_KEYSPACE,
       credentials: {
         username: CASSANDRA_USERNAME,
         password: CASSANDRA_PASSWORD
