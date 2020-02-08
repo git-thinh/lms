@@ -1,16 +1,18 @@
 {
   "ignore": [
-    "__tests__",
-    "node_modules",
-    "lib",
-    "redux",
-    "pages",
     ".vscode",
+    ".git",
     ".next",
+    "node_modules",
     "public",
-    "docs",
+    "__tests__",
     "data",
-    ".git"
+    "docs",
+    "components",
+    "redux",
+    "lib",
+    "out",
+    "dist"
   ],
   "watch": ["server", "public", ".env"],
   "exec": "ts-node --project tsconfig.server.json server/app.ts",
