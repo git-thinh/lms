@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 
-import withLayout from '../../components/hoc/withLayout';
+import useLayout from '../../components/hooks/useLayout';
 
 const SignUpPage: NextPage = () => {
   const signUpInitialValues = React.useMemo(
@@ -55,84 +55,88 @@ const SignUpPage: NextPage = () => {
     console.log(values, formikHelpers);
   }, []);
 
+  const Layout = useLayout();
+
   return (
     <>
       <Head>
         <title>Sign Up</title>
       </Head>
-      <Container maxWidth="xl">
-        <Grid container justify="center">
-          <Grid item md={6} sm={8} xs={12}>
-            <Box pt={3} textAlign="center">
-              <Typography variant="h4">Create an account</Typography>
-            </Box>
-            <Formik
-              onSubmit={signUpOnSubmit}
-              initialValues={signUpInitialValues}
-              validationSchema={signUpValidationSchema}
-            >
-              {(formikProps) => {
-                const { values, touched, errors, handleChange, handleSubmit } = formikProps;
+      <Layout>
+        <Container maxWidth="xl">
+          <Grid container justify="center">
+            <Grid item md={6} sm={8} xs={12}>
+              <Box pt={3} textAlign="center">
+                <Typography variant="h4">Create an account</Typography>
+              </Box>
+              <Formik
+                onSubmit={signUpOnSubmit}
+                initialValues={signUpInitialValues}
+                validationSchema={signUpValidationSchema}
+              >
+                {(formikProps) => {
+                  const { values, touched, errors, handleChange, handleSubmit } = formikProps;
 
-                return (
-                  <Form>
-                    <Box py={2}>
-                      <TextField
-                        label="Username"
-                        fullWidth
-                        value={values.username}
-                        onChange={handleChange('username')}
-                        helperText={touched.username && errors.username}
-                      />
-                    </Box>
-                    <Box py={2}>
-                      <TextField
-                        label="Email"
-                        fullWidth
-                        value={values.email}
-                        onChange={handleChange('email')}
-                        helperText={touched.email && errors.email}
-                      />
-                    </Box>
-                    <Box py={2}>
-                      <TextField
-                        label="Password"
-                        fullWidth
-                        value={values.password}
-                        onChange={handleChange('password')}
-                        helperText={touched.password && errors.password}
-                      />
-                    </Box>
-                    <Box py={2}>
-                      <TextField
-                        label="Retype password"
-                        fullWidth
-                        value={values.confirmPassword}
-                        onChange={handleChange('confirmPassword')}
-                        helperText={touched.confirmPassword && errors.confirmPassword}
-                      />
-                    </Box>
-                    <Box py={2}>
-                      <Button
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                          handleSubmit();
-                        }}
-                      >
-                        Create
-                      </Button>
-                    </Box>
-                  </Form>
-                );
-              }}
-            </Formik>
+                  return (
+                    <Form>
+                      <Box py={2}>
+                        <TextField
+                          label="Username"
+                          fullWidth
+                          value={values.username}
+                          onChange={handleChange('username')}
+                          helperText={touched.username && errors.username}
+                        />
+                      </Box>
+                      <Box py={2}>
+                        <TextField
+                          label="Email"
+                          fullWidth
+                          value={values.email}
+                          onChange={handleChange('email')}
+                          helperText={touched.email && errors.email}
+                        />
+                      </Box>
+                      <Box py={2}>
+                        <TextField
+                          label="Password"
+                          fullWidth
+                          value={values.password}
+                          onChange={handleChange('password')}
+                          helperText={touched.password && errors.password}
+                        />
+                      </Box>
+                      <Box py={2}>
+                        <TextField
+                          label="Retype password"
+                          fullWidth
+                          value={values.confirmPassword}
+                          onChange={handleChange('confirmPassword')}
+                          helperText={touched.confirmPassword && errors.confirmPassword}
+                        />
+                      </Box>
+                      <Box py={2}>
+                        <Button
+                          fullWidth
+                          variant="contained"
+                          color="primary"
+                          onClick={() => {
+                            handleSubmit();
+                          }}
+                        >
+                          Create
+                        </Button>
+                      </Box>
+                    </Form>
+                  );
+                }}
+              </Formik>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </Layout>
     </>
   );
 };
 
-export default withLayout(SignUpPage);
+export default SignUpPage;

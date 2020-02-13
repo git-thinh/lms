@@ -21,7 +21,7 @@ class CustomDocument extends NextDocument {
       styles: (
         <>
           {initialProps.styles}
-          <style id="jss-server-side">{`${css}`}</style>
+          <style id="jss-server-side">{css}</style>
         </>
       )
     };
@@ -34,12 +34,11 @@ class CustomDocument extends NextDocument {
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link rel="shortcut icon" href="images/favicon.ico" />
-          <link rel="stylesheet" type="text/css" href="css/nprogress.min.css" />
-          <link rel="stylesheet" type="text/css" href="css/material-icons.css" />
-          <link rel="stylesheet" type="text/css" href="css/roboto.css" />
-          <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-          <link rel="stylesheet" type="text/css" href="css/override.css" />
+          <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+          <link rel="stylesheet" type="text/css" href="/css/nprogress.min.css" />
+          <link rel="stylesheet" type="text/css" href="/css/material-icons.css" />
+          <link rel="stylesheet" type="text/css" href="/css/roboto.css" />
+          <link rel="stylesheet" type="text/css" href="/css/override.css" />
         </Head>
         <body>
           <Main />

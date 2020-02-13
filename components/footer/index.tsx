@@ -11,6 +11,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 
 const useFooterStyles = makeStyles((theme) => ({
   footer: {
+    flexShrink: 1,
     backgroundColor: theme.palette.background.default
   }
 }));
@@ -29,7 +30,7 @@ const Footer: React.FC = () => {
         </Grid>
         <Grid item md={8} sm={12} xs={12}>
           <Box p={3}>
-            <IconButton target="_blank" href="https://github.com/QuangDuong120198/lms">
+            <IconButton target="_blank" href="https://github.com/duong755/lms">
               <GitHubIcon />
             </IconButton>
             <IconButton target="_blank" href="https://twitter.com/ngoquangduong">

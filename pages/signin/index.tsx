@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 
-import withLayout from '../../components/hoc/withLayout';
+import useLayout from '../../components/hooks/useLayout';
 
 const SignInPage: NextPage = () => {
   const signInInitialValues = React.useMemo(
@@ -37,66 +37,70 @@ const SignInPage: NextPage = () => {
     console.log(values, formikHelpers);
   }, []);
 
+  const Layout = useLayout();
+
   return (
     <>
       <Head>
         <title>Sign in to OpenLMS</title>
       </Head>
-      <Container maxWidth="xl">
-        <Grid container justify="center">
-          <Grid item md={6} sm={8} xs={12}>
-            <Box pt={3} textAlign="center">
-              <Typography variant="h4">Sign in to OpenLMS</Typography>
-            </Box>
-            <Formik
-              onSubmit={signInOnSubmit}
-              initialValues={signInInitialValues}
-              validationSchema={signInValidationSchema}
-            >
-              {(formikProps) => {
-                const { values, touched, errors, handleChange, handleSubmit } = formikProps;
+      <Layout>
+        <Container maxWidth="xl">
+          <Grid container justify="center">
+            <Grid item md={6} sm={8} xs={12}>
+              <Box pt={3} textAlign="center">
+                <Typography variant="h4">Sign in to OpenLMS</Typography>
+              </Box>
+              <Formik
+                onSubmit={signInOnSubmit}
+                initialValues={signInInitialValues}
+                validationSchema={signInValidationSchema}
+              >
+                {(formikProps) => {
+                  const { values, touched, errors, handleChange, handleSubmit } = formikProps;
 
-                return (
-                  <Form>
-                    <Box py={2}>
-                      <TextField
-                        fullWidth
-                        label="Username or Email"
-                        value={values.usernameOrEmail}
-                        onChange={handleChange('usernameOrEmail')}
-                        helperText={touched.usernameOrEmail && errors.usernameOrEmail}
-                      />
-                    </Box>
-                    <Box py={2}>
-                      <TextField
-                        fullWidth
-                        label="Password"
-                        value={values.password}
-                        onChange={handleChange('password')}
-                        helperText={touched.password && errors.password}
-                      />
-                    </Box>
-                    <Box py={2}>
-                      <Button
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                          handleSubmit();
-                        }}
-                      >
-                        Sign in
-                      </Button>
-                    </Box>
-                  </Form>
-                );
-              }}
-            </Formik>
+                  return (
+                    <Form>
+                      <Box py={2}>
+                        <TextField
+                          fullWidth
+                          label="Username or Email"
+                          value={values.usernameOrEmail}
+                          onChange={handleChange('usernameOrEmail')}
+                          helperText={touched.usernameOrEmail && errors.usernameOrEmail}
+                        />
+                      </Box>
+                      <Box py={2}>
+                        <TextField
+                          fullWidth
+                          label="Password"
+                          value={values.password}
+                          onChange={handleChange('password')}
+                          helperText={touched.password && errors.password}
+                        />
+                      </Box>
+                      <Box py={2}>
+                        <Button
+                          fullWidth
+                          variant="contained"
+                          color="primary"
+                          onClick={() => {
+                            handleSubmit();
+                          }}
+                        >
+                          Sign in
+                        </Button>
+                      </Box>
+                    </Form>
+                  );
+                }}
+              </Formik>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </Layout>
     </>
   );
 };
 
-export default withLayout(SignInPage);
+export default SignInPage;
