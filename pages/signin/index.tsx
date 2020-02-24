@@ -5,13 +5,13 @@ import Head from 'next/head';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 
 import useLayout from '../../components/hooks/useLayout';
+import CustomTextField from '../../components/styled/CustomTextField';
 
 const SignInPage: NextPage = () => {
   const signInInitialValues = React.useMemo(
@@ -26,10 +26,11 @@ const SignInPage: NextPage = () => {
   type SignInOnSubmit = (values: SignInValues, formikHelpers: FormikHelpers<SignInValues>) => void | Promise<any>;
 
   const signInValidationSchema = React.useMemo(
-    () => ({
-      usernameOrEmail: yup.string().required(),
-      password: yup.string().required()
-    }),
+    () =>
+      yup.object().shape({
+        usernameOrEmail: yup.string().required(),
+        password: yup.string().required()
+      }),
     []
   );
 
@@ -62,7 +63,7 @@ const SignInPage: NextPage = () => {
                   return (
                     <Form>
                       <Box py={2}>
-                        <TextField
+                        <CustomTextField
                           fullWidth
                           label="Username or Email"
                           value={values.usernameOrEmail}
@@ -71,7 +72,7 @@ const SignInPage: NextPage = () => {
                         />
                       </Box>
                       <Box py={2}>
-                        <TextField
+                        <CustomTextField
                           fullWidth
                           label="Password"
                           value={values.password}

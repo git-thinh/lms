@@ -6,13 +6,13 @@ import Head from 'next/head';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 
 import useLayout from '../../components/hooks/useLayout';
+import CustomTextField from '../../components/styled/CustomTextField';
 
 const SignUpPage: NextPage = () => {
   const signUpInitialValues = React.useMemo(
@@ -80,7 +80,7 @@ const SignUpPage: NextPage = () => {
                   return (
                     <Form>
                       <Box py={2}>
-                        <TextField
+                        <CustomTextField
                           label="Username"
                           fullWidth
                           value={values.username}
@@ -89,7 +89,7 @@ const SignUpPage: NextPage = () => {
                         />
                       </Box>
                       <Box py={2}>
-                        <TextField
+                        <CustomTextField
                           label="Email"
                           fullWidth
                           value={values.email}
@@ -98,7 +98,7 @@ const SignUpPage: NextPage = () => {
                         />
                       </Box>
                       <Box py={2}>
-                        <TextField
+                        <CustomTextField
                           label="Password"
                           fullWidth
                           value={values.password}
@@ -107,7 +107,7 @@ const SignUpPage: NextPage = () => {
                         />
                       </Box>
                       <Box py={2}>
-                        <TextField
+                        <CustomTextField
                           label="Retype password"
                           fullWidth
                           value={values.confirmPassword}
